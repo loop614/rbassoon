@@ -1,0 +1,27 @@
+services:
+  rbassoon_rust:
+    build:
+      context: app
+    ports:
+      - 6969:8080
+    volumes:
+      - ./app/.:/rbassoon
+    command: /rbassoon/target/debug/rbassoon
+    environment:
+      - RUST_LOG=debug
+      - RUST_BACKTRACE=full
+    depends_on:
+      - rbassoon_spacetime
+
+  rbassoon_spacetime:
+    build:
+      context: spacetime
+    restart: always
+    volumes:
+      - ./spacetime/.:/rbassoon/spacetime
+      - db-data:/stdb
+    ports:
+      - 6868:80
+
+volumes:
+  db-data:

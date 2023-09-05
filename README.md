@@ -1,22 +1,24 @@
-## Rust Web Backend learning project ! 
+## Rust Web Backend + Spacetimedb 
 
 ### Description
-- Learning rust web backend
+- Rust web backend and [spacetimedb](https://spacetimedb.com/)
 
 ### Status
 - setup, poc
 
 ### Next
 - error handling
-- docker
+- actix-web to spacetime requests
 
 ### Requirements
-- rustc, cargo
+- make, docker
 
 ### Quick Start
 ```console
-$ cargo run
+$ make start
+$ make spacetime_publish
 ```
 
 ### Special Thanks to
-- [MoonKraken](github.com/MoonKraken)
+- [MoonKraken](https://github.com/MoonKraken/)
+- [jonhoo](https://github.com/jonhoo/)

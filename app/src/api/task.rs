@@ -1,13 +1,12 @@
 use actix_web::{
     get,
     post,
-    HttpRequest,
     web,
 };
 
 use serde::{Serialize, Deserialize};
 use crate::model::task::{Task, TaskCollection};
-use crate::repository::ddb::DDBRepository;
+use crate::repository::spacetime::SpacetimeRepository;
 
 #[derive(Deserialize, Serialize)]
 pub struct TaskIdentifier {
@@ -19,14 +18,9 @@ pub struct TaskRequest {
     task_name: String,
 }
 
-#[post("/{name}")]
-async fn index(req: HttpRequest) -> web::Json<String> {
-    web::Json(req.match_info().get("name").unwrap().to_owned())
-}
-
 #[get("/task/list")]
 pub async fn task_list(
-    repository: web::Data<DDBRepository>
+    repository: web::Data<SpacetimeRepository>
 ) -> web::Json<String> {
     let task_list: TaskCollection = repository.task_list().await;
     let tasks_string = serde_json::to_string(&task_list).unwrap();
@@ -34,9 +28,19 @@ pub async fn task_list(
     return web::Json(tasks_string);
 }
 
+
+#[get("/task/spacetime")]
+pub async fn task_spacetimeping(
+    repository: web::Data<SpacetimeRepository>
+) -> web::Json<String> {
+    let ping: String = repository.ping().await.unwrap();
+
+    return web::Json(ping);
+}
+
 #[post("/task/add")]
 pub async fn task_add(
-    repository: web::Data<DDBRepository>,
+    repository: web::Data<SpacetimeRepository>,
     request: web::Json<TaskRequest>
 ) -> web::Json<String> {
     let task: Task = repository.task_add(request.task_name.clone()).await;

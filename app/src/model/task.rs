@@ -12,9 +12,6 @@ pub struct Task {
 }
 
 impl Task {
-    pub fn new(task_id: u64, task_name: String) -> Task {
-        Task { task_id, task_name }
-    }
 }
 
 impl TaskCollection {
@@ -29,9 +26,5 @@ impl TaskCollection {
         }
 
         return task_collection;
-    }
-
-    pub fn add_task(&mut self, task: Task) {
-        self.tasks.push(task);
     }
 }

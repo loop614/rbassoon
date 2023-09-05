@@ -4,10 +4,11 @@ mod repository;
 
 use api::task::{
     task_list,
-    task_add
+    task_add,
+    task_spacetimeping
 };
 
-use repository::ddb::DDBRepository;
+use crate::repository::spacetime::SpacetimeRepository;
 use actix_web::{HttpServer, App, web::Data, middleware::Logger};
 
 #[actix_web::main]
@@ -17,16 +18,17 @@ async fn main() -> std::io::Result<()> {
     env_logger::init();
 
     HttpServer::new(move || {
-        let repository: DDBRepository = DDBRepository::init();
-        let ddb_data: Data<DDBRepository> = Data::new(repository);
+        let spacetime: SpacetimeRepository = SpacetimeRepository::init();
+        let spacetime_data: Data<SpacetimeRepository> = Data::new(spacetime);
         let logger: Logger = Logger::default();
         App::new()
             .wrap(logger)
-            .app_data(ddb_data)
-            .service(task_list)
+            .app_data(spacetime_data)
+            .service(task_spacetimeping)
             .service(task_add)
+            .service(task_list)
     })
-    .bind(("127.0.0.1", 6969))?
+    .bind(("0.0.0.0", 8080))?
     .run()
     .await
 }
