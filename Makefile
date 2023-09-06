@@ -28,7 +28,7 @@ spacetime_init:
 	$(BASSOON_SPACETIME_EXE) init --lang=rust /random
 
 spacetime_publish:
-	$(BASSOON_SPACETIME_EXE) publish --project-path spacetime $(BASSOON_SPACETIME_DB)
+	$(BASSOON_SPACETIME_EXE) publish --project-path spacetimerepo $(BASSOON_SPACETIME_DB)
 
 spacetime_send:
 	$(BASSOON_SPACETIME_EXE) call $(BASSOON_SPACETIME_DB) send_message '["Hello world!"]'

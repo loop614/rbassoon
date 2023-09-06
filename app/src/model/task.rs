@@ -11,9 +11,6 @@ pub struct Task {
     pub task_name: String
 }
 
-impl Task {
-}
-
 impl TaskCollection {
     pub fn init() -> TaskCollection {
         return TaskCollection{ tasks: vec![] };

@@ -2,20 +2,16 @@ mod api;
 mod model;
 mod repository;
 
-use api::task::{
-    task_list,
-    task_add,
-    task_spacetimeping
-};
+use actix_web::{HttpServer, App, web::Data, middleware::Logger};
+use api::task::{task_list, task_add, task_spacetimeping};
 
 use crate::repository::spacetime::SpacetimeRepository;
-use actix_web::{HttpServer, App, web::Data, middleware::Logger};
 use crate::api::task::task_spacetimehello;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "debug");
-    std::env::set_var("RUST_BACKTRACE", "1");
+    std::env::set_var("RUST_BACKTRACE", "full");
     env_logger::init();
 
     HttpServer::new(move || {
