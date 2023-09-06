@@ -1,23 +1,19 @@
-## Rust Web Backend + Spacetimedb 
-
 ### Description
-- Rust web backend and [spacetimedb](https://spacetimedb.com/)
+- Rust web backend using actix-web and [spacetimedb](https://spacetimedb.com/)
 
 ### Status
 - setup, poc
 
 ### Next
 - error handling
-- actix-web to spacetime requests
 
 ### Requirements
-- make, docker
+- make, docker, cargo, rustc
 
-### Quick Start
+### Start
 ```console
-$ docker compose up rbassoon_spacetime
-$ cd app
-$ cargo watch -c -w src -x run
+$ make start
+$ make spacetime_publish
 ```
 
 ### Special Thanks to

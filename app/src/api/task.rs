@@ -38,6 +38,16 @@ pub async fn task_spacetimeping(
     return web::Json(ping);
 }
 
+
+#[get("/task/spacetime_hello")]
+pub async fn task_spacetimehello(
+    repository: web::Data<SpacetimeRepository>
+) -> web::Json<String> {
+    let ping: String = repository.say_hello().await.unwrap();
+
+    return web::Json(ping);
+}
+
 #[post("/task/add")]
 pub async fn task_add(
     repository: web::Data<SpacetimeRepository>,

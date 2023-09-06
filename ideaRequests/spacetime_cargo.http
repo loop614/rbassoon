@@ -1,9 +1,9 @@
 ### GET request with a header
-GET http://localhost:6969/task/spacetime
+GET http://localhost:8080/task/spacetime
 Accept: application/json
 
 ### GET request with a header
-GET http://localhost:6969/task/spacetime_hello
+GET http://localhost:8080/task/spacetime_hello
 Accept: application/json
 
 ### GET request with a header

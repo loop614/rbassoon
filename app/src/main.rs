@@ -10,6 +10,7 @@ use api::task::{
 
 use crate::repository::spacetime::SpacetimeRepository;
 use actix_web::{HttpServer, App, web::Data, middleware::Logger};
+use crate::api::task::task_spacetimehello;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -25,6 +26,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(logger)
             .app_data(spacetime_data)
             .service(task_spacetimeping)
+            .service(task_spacetimehello)
             .service(task_add)
             .service(task_list)
     })

@@ -6,7 +6,7 @@ services:
       - 6969:8080
     volumes:
       - ./app/.:/rbassoon
-    command: cargo watch -c -w src -x run
+    command: cargo run
     environment:
       - RUST_LOG=debug
       - RUST_BACKTRACE=full
