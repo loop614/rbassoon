@@ -15,8 +15,9 @@
 
 ### Quick Start
 ```console
-$ make start
-$ make spacetime_publish
+$ docker compose up rbassoon_spacetime
+$ cd app
+$ cargo watch -c -w src -x run
 ```
 
 ### Special Thanks to

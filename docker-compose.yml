@@ -6,7 +6,7 @@ services:
       - 6969:8080
     volumes:
       - ./app/.:/rbassoon
-    command: /rbassoon/target/debug/rbassoon
+    command: cargo watch -c -w src -x run
     environment:
       - RUST_LOG=debug
       - RUST_BACKTRACE=full
@@ -15,10 +15,10 @@ services:
 
   rbassoon_spacetime:
     build:
-      context: spacetime
+      context: spacetimerepo
     restart: always
     volumes:
-      - ./spacetime/.:/rbassoon/spacetime
+      - ./spacetimerepo/.:/rbassoon/spacetimerepo
       - db-data:/stdb
     ports:
       - 6868:80

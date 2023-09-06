@@ -15,8 +15,14 @@ nuke:
 spacetime_open:
 	$(BASSOON_SPACETIME) /bin/bash
 
+temp:
+	$(BASSOON_RUST) echo $RUST_BACKTRACE
+
 rust_open:
 	$(BASSOON_RUST) /bin/bash
+
+watch:
+	$(BASSOON_RUST) cargo watch  -c -w src -x run
 
 spacetime_init:
 	$(BASSOON_SPACETIME_EXE) init --lang=rust /random

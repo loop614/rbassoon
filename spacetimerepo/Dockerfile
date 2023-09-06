@@ -9,7 +9,5 @@ WORKDIR /clockwork
 RUN wget https://github.com/clockworklabs/SpacetimeDB/releases/latest/download/spacetime.Linux-amd64.tar.gz
 RUN tar xf spacetime.Linux-amd64.tar.gz
 
-WORKDIR /spacetime
+WORKDIR /spacetimerepo
 COPY . .
-
-WORKDIR /
