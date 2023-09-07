@@ -1,11 +1,11 @@
-### GET request with a header
-GET http://localhost:6969/task/spacetime
+### POST request with a header
+POST http://localhost:3000/identity
 Accept: application/json
 
 ### GET request with a header
-GET http://localhost:6969/task/spacetime_hello
+GET http://localhost:6969/database/ping
 Accept: application/json
 
 ### GET request with a header
-GET http://localhost:6868/database/ping
+GET http://localhost:6969/call/repository/hello
 Accept: application/json

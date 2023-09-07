@@ -2,6 +2,7 @@ use spacetimedb::{spacetimedb, ReducerContext, Identity, Timestamp};
 mod table;
 mod reducer;
 mod validator;
+mod transfer;
 
 use crate::table::user::User;
 

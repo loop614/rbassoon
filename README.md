@@ -1,11 +1,11 @@
 ### Description
-- Rust web backend using actix-web and [spacetimedb](https://spacetimedb.com/)
+- Rust web backend using [spacetimedb](https://spacetimedb.com/)
 
 ### Status
 - setup, poc
 
 ### Next
-- error handling
+- first reducers, error handling
 
 ### Requirements
 - make, docker, cargo, rustc
@@ -13,7 +13,7 @@
 ### Start
 ```console
 $ make start
-$ make spacetime_publish
+$ make publish
 ```
 
 ### Special Thanks to

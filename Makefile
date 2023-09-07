@@ -1,11 +1,9 @@
-BASSOON_RUST := docker compose exec rbassoon_rust
 BASSOON_SPACETIME := docker compose exec rbassoon_spacetime
 BASSOON_SPACETIME_EXE := docker compose exec rbassoon_spacetime /clockwork/spacetime
 BASSOON_SPACETIME_DB := repository
 
 start:
-	docker compose build
-	docker compose up
+	docker compose up --build
 
 nuke:
 	docker compose down --volumes
@@ -16,29 +14,22 @@ spacetime_open:
 	$(BASSOON_SPACETIME) /bin/bash
 
 temp:
-	$(BASSOON_RUST) echo $RUST_BACKTRACE
+	$(BASSOON_SPACETIME_EXE)
 
-rust_open:
-	$(BASSOON_RUST) /bin/bash
+init:
+	$(BASSOON_SPACETIME_EXE) init --lang=rust /server
 
-watch:
-	$(BASSOON_RUST) cargo watch  -c -w src -x run
+publish:
+	$(BASSOON_SPACETIME_EXE) publish --project-path server $(BASSOON_SPACETIME_DB)
 
-spacetime_init:
-	$(BASSOON_SPACETIME_EXE) init --lang=rust /random
-
-spacetime_publish:
-	$(BASSOON_SPACETIME_EXE) publish --project-path spacetimerepo $(BASSOON_SPACETIME_DB)
-
-spacetime_send:
+call:
 	$(BASSOON_SPACETIME_EXE) call $(BASSOON_SPACETIME_DB) send_message '["Hello world!"]'
 
-spacetime_sql:
+sql:
 	$(BASSOON_SPACETIME_EXE) sql $(BASSOON_SPACETIME_DB) "SELECT * FROM Message"
 
-spacetime_logs:
+logs:
 	$(BASSOON_SPACETIME_EXE) logs $(BASSOON_SPACETIME_DB)
 
 per:
-	$(BASSOON_SPACETIME) chmod a+rwx -R /spacetime
-	$(BASSOON_RUST) chmod a+rwx -R /app
+	$(BASSOON_SPACETIME) chmod a+rwx -R /server

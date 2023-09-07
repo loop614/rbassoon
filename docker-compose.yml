@@ -1,27 +1,17 @@
 services:
-  rbassoon_rust:
+  rbassoon_spacetime:
     build:
-      context: app
-    ports:
-      - 6969:8080
-    volumes:
-      - ./app/.:/rbassoon
-    command: cargo run
+      context: server
+    restart: always
+#    command: cargo run
     environment:
       - RUST_LOG=debug
       - RUST_BACKTRACE=full
-    depends_on:
-      - rbassoon_spacetime
-
-  rbassoon_spacetime:
-    build:
-      context: spacetimerepo
-    restart: always
     volumes:
-      - ./spacetimerepo/.:/rbassoon/spacetimerepo
+      - ./server/:/app
       - db-data:/stdb
     ports:
-      - 6868:80
+      - 6969:80
 
 volumes:
   db-data:
