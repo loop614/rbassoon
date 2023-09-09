@@ -1,6 +1,9 @@
 BASSOON_SPACETIME := docker compose exec rbassoon_spacetime
 BASSOON_SPACETIME_EXE := docker compose exec rbassoon_spacetime /clockwork/spacetime
-BASSOON_SPACETIME_DB := repository
+BASSOON_SPACETIME_DB := rep
+
+# Created new database with domain: rep, address: 81f762b7b17f64fa781dbd81cf803f55
+# Created new database with domain: repos, address: ae2af243fc1ae661497b7647428c4200
 
 start:
 	docker compose up --build
