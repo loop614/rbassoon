@@ -1,12 +1,31 @@
 ### GET request with a header
-GET http://localhost:6969/task/list
+GET http://localhost:8080/es_init
+Accept: application/json
+
+
+### GET request with a header
+GET http://localhost:8080/blog/list
 Accept: application/json
 
 
 ### Send POST request with json body
-POST http://localhost:6969/task/add
+POST http://localhost:8080/blog/add
 Content-Type: application/json
 
 {
-    "task_name": "content"
+  "blog_id" : 11,
+  "blog_title" : "blog_title",
+  "blog_name" : "blog_name_1"
+}
+
+
+### Send GET request with json body
+GET http://localhost:8080/blog/search_by_title?from=0&size=10
+Accept: application/json
+Content-Type: application/json
+
+{
+  "blog_title": "blog_title",
+  "from": 0,
+  "size": 10
 }

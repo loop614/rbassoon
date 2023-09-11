@@ -14,9 +14,10 @@ RUN apt-get install -y --no-install-recommends \
     wget \
     git
 
+RUN export RUST_BACKTRACE=full \
+ export RUST_LOG=debug
+
 RUN cargo install cargo-watch
 
 WORKDIR /app
 COPY . .
-
-RUN cargo build

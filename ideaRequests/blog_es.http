@@ -1,0 +1,40 @@
+### GET request with a header
+GET http://localhost:9200/_cluster/health
+Accept: application/json
+
+### HEAD request with a header
+HEAD http://localhost:9200/blogpost
+Accept: application/json
+
+### Send POST request with json body
+POST http://localhost:9200/blogpost/_doc
+Content-Type: application/json
+
+{
+  "blog_id" : 1,
+  "blog_title" : "blog_title",
+  "blog_name" : "blog_name"
+}
+
+### Send GET request with json body
+GET http://localhost:9200/blogpost/_doc/wl04hIoBzqpJTd0q461P
+Accept: application/json
+
+
+### GET request with json body
+GET http://localhost:9200/blogpost/_search
+Content-Type: application/json
+Accept: application/json
+
+{
+"query": { "match": { "blog_title": "blog_title" } }
+}
+
+### POST request with json body
+POST http://localhost:9200/blogpost/_delete_by_query
+Content-Type: application/json
+
+{
+"query": { "match_all": {} }
+}
+

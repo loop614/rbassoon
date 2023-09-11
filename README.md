@@ -1,20 +1,19 @@
 ### Description
-- Rust web backend using actix-web and [spacetimedb](https://spacetimedb.com/)
+- Rust web backend using actix-web with ElasticSearch
 
 ### Status
-- setup, poc
-
-### Next
-- error handling
+- poc done
 
 ### Requirements
-- make, docker, cargo, rustc
+- make, docker, rustc, cargo, cargo watch
 
 ### Start
 ```console
-$ make start
-$ make spacetime_publish
+$ docker compose up rbassoon_es
+$ cargo run
+$ wget http://localhost:8080/es_init
 ```
+- check ideaRequests
 
 ### Special Thanks to
 - [MoonKraken](https://github.com/MoonKraken/)
